@@ -1,9 +1,14 @@
 use std::io::{self, Write};
 
 fn main() {
-    // for_loop_examples()
-    // while_loop_examples()
-    calculator()
+    // for_loop_examples();
+    // while_loop_examples();
+    // calculator();
+
+    // let mut v = vec![1, 2, 3];
+    // v.push(4);
+
+    // println!("{:?}", v);
 }
 
 // For loop bo'yicha examplelar
