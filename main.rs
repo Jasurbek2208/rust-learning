@@ -1,6 +1,8 @@
+use rand::Rng;
 use std::io::{self, Write};
 
 fn main() {
+    // find_my_number()
     // for_loop_examples();
     // while_loop_examples();
     // calculator();
@@ -123,6 +125,45 @@ fn calculator() {
     }
 
     println!("\nNatija: {result}");
+}
+
+fn find_my_number() {
+    let random_number: i32 = rand::rng().random_range(1..=100); // random uchun rand kutubxona erak ekan, va bu kod hozir 1dan 100gacha random beradi.
+
+    println!("Men 1 dan 100 gacha bo'lgan bir son o'yladim, qani topib ko'rchi!");
+
+    loop {
+        print!("Sonni kiriting: ");
+        io::stdout().flush().unwrap();
+
+        let mut answer: String = String::new();
+        io::stdin().read_line(&mut answer).unwrap();
+
+        let guess: i32 = match answer.trim().parse() {
+            Ok(num) => num,
+            Err(_) => {
+                println!("Iltimos, son kiriting.");
+                continue;
+            }
+        };
+
+        if (guess < random_number) {
+            if ((guess + 10) >= random_number) {
+                println!("Men o'ylagan son biroz kattaroq!")
+            } else {
+                println!("Men o'ylagan son katta!")
+            }
+        } else if (guess > random_number) {
+            if ((guess - 10) <= random_number) {
+                println!("Men o'ylagan son biroz kichikroq!")
+            } else {
+                println!("Men o'ylagan son kichik!")
+            }
+        } else {
+            println!("Qoyil, topding! Men aynan shu {} sonini o'ylagan edim!", random_number);
+            break;
+        }
+    }
 }
 
 // ----------------------------------------------------------------------------------------------------
